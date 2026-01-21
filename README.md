@@ -359,7 +359,7 @@ Install just **3 services** to use core Skills.
 |---------|------------|---------|
 | clear-thought | [waldzellai/waldzell-mcp](https://github.com/waldzellai/waldzell-mcp) | Deep analysis, mental models |
 | sequential-thinking-tools | [spences10/mcp-sequentialthinking-tools](https://github.com/spences10/mcp-sequentialthinking-tools) | Step-by-step reasoning |
-| stochastic-thinking | [waldzellai/stochasticthinking](https://github.com/waldzellai/stochasticthinking) | Probabilistic analysis |
+| stochastic-thinking | [waldzellai/waldzell-mcp](https://github.com/waldzellai/waldzell-mcp) | Probabilistic analysis |
 
 > **Full list**: See [INSTALLATION.md](./INSTALLATION.md) for all 18 MCP services.
 
@@ -374,9 +374,8 @@ git clone https://github.com/spences10/mcp-sequentialthinking-tools.git
 cd mcp-sequentialthinking-tools
 npm install && npm run build
 
-# 3. stochastic-thinking (probabilistic analysis)
-git clone https://github.com/waldzellai/stochasticthinking.git
-cd stochasticthinking
+# 3. stochastic-thinking (probabilistic analysis, in waldzell-mcp monorepo)
+cd ../server-stochasticthinking
 npm install && npm run build
 ```
 
@@ -799,7 +798,7 @@ cd mcp-management
 |--------|--------|------|
 | clear-thought | [waldzellai/waldzell-mcp](https://github.com/waldzellai/waldzell-mcp) | 심층 분석, 멘탈 모델 |
 | sequential-thinking-tools | [spences10/mcp-sequentialthinking-tools](https://github.com/spences10/mcp-sequentialthinking-tools) | 순차적 사고 |
-| stochastic-thinking | [waldzellai/stochasticthinking](https://github.com/waldzellai/stochasticthinking) | 확률적 분석 |
+| stochastic-thinking | [waldzellai/waldzell-mcp](https://github.com/waldzellai/waldzell-mcp) | 확률적 분석 |
 
 > **전체 목록**: 18개 MCP 서비스 설치는 [INSTALLATION.md](./INSTALLATION.md) 참조
 
@@ -814,9 +813,8 @@ git clone https://github.com/spences10/mcp-sequentialthinking-tools.git
 cd mcp-sequentialthinking-tools
 npm install && npm run build
 
-# 3. stochastic-thinking (확률적 분석)
-git clone https://github.com/waldzellai/stochasticthinking.git
-cd stochasticthinking
+# 3. stochastic-thinking (확률적 분석, waldzell-mcp monorepo 내부)
+cd ../server-stochasticthinking
 npm install && npm run build
 ```
 

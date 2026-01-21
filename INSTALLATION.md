@@ -35,9 +35,9 @@ git clone https://github.com/spences10/mcp-sequentialthinking-tools.git
 cd mcp-sequentialthinking-tools
 npm install && npm run build
 
-# 3. stochastic-thinking
-git clone https://github.com/waldzellai/stochasticthinking.git
-cd stochasticthinking
+# 3. stochastic-thinking (waldzell-mcp monorepo 내부)
+git clone https://github.com/waldzellai/waldzell-mcp.git
+cd waldzell-mcp/packages/server-stochasticthinking
 npm install && npm run build
 ```
 
@@ -83,9 +83,9 @@ npm install && npm run build
 | 서비스 | 설치 방법 | GitHub |
 |--------|----------|--------|
 | clear-thought | git clone + npm | [waldzellai/waldzell-mcp](https://github.com/waldzellai/waldzell-mcp) |
-| clear-thought-1.5 | git clone + npm | [waldzellai/clear-thought-onepointfive](https://github.com/waldzellai/clear-thought-onepointfive) |
+| clear-thought-1.5 | git clone + npm | [waldzellai/clearthought-onepointfive](https://github.com/waldzellai/clearthought-onepointfive) |
 | sequential-thinking-tools | git clone + npm | [spences10/mcp-sequentialthinking-tools](https://github.com/spences10/mcp-sequentialthinking-tools) |
-| stochastic-thinking | git clone + npm | [waldzellai/stochasticthinking](https://github.com/waldzellai/stochasticthinking) |
+| stochastic-thinking | git clone + npm | [waldzellai/waldzell-mcp](https://github.com/waldzellai/waldzell-mcp) (packages/server-stochasticthinking) |
 | model-enhancement-servers | git clone + npm | [waldzellai/model-enhancement-servers](https://github.com/waldzellai/model-enhancement-servers) |
 | context7 | git clone + npm | (별도 설정 필요) |
 | code-context-provider | git clone + npm | (별도 설정 필요) |
@@ -136,8 +136,8 @@ npm run build
 통합 인지 도구 (30+ operations)
 
 ```bash
-git clone https://github.com/waldzellai/clear-thought-onepointfive.git
-cd clear-thought-onepointfive
+git clone https://github.com/waldzellai/clearthought-onepointfive.git
+cd clearthought-onepointfive
 npm install
 npm run build
 ```
@@ -160,8 +160,8 @@ npm run build
 확률적 의사결정 (Monte Carlo, MDP, MCTS, Bayesian, HMM)
 
 ```bash
-git clone https://github.com/waldzellai/stochasticthinking.git
-cd stochasticthinking
+git clone https://github.com/waldzellai/waldzell-mcp.git
+cd waldzell-mcp/packages/server-stochasticthinking
 npm install
 npm run build
 ```
@@ -182,7 +182,7 @@ npm run build
 세션 간 메모리 유지 (Docker 필요)
 
 ```bash
-git clone https://github.com/oramasearch/serena.git
+git clone https://github.com/oraios/serena.git
 cd serena
 docker build -t serena-mcp:latest .
 ```
