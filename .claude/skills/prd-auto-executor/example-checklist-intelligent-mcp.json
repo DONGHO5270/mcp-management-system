@@ -1,0 +1,114 @@
+{
+  "project": "intelligent-mcp-selection-demo",
+  "projectPath": "C:\\claude-development\\mcp-management\\.claude\\skills\\prd-auto-executor",
+  "tasks": [
+    {
+      "id": "task-1",
+      "name": "User Authentication API 설계",
+      "description": "JWT 기반 사용자 인증 API 설계 및 구현. Refresh token 메커니즘 포함.",
+      "priority": "hard",
+      "estimatedTime": "4 hours",
+      "dependencies": [],
+      "metadata": {
+        "task_type": "api_design",
+        "acceptance_criteria": [
+          "JWT 토큰 발급 엔드포인트 구현",
+          "Refresh token 순환 메커니즘",
+          "보안 검증 (OWASP Top 10)",
+          "API 문서 작성 (Swagger/OpenAPI)"
+        ],
+        "test_command": "npm test -- auth.test.ts",
+        "build_command": "npm run build"
+      }
+    },
+    {
+      "id": "task-2",
+      "name": "검색 알고리즘 성능 최적화",
+      "description": "사용자 검색 알고리즘 성능 개선. 응답 시간 50ms 이하, 메모리 사용량 30% 감소 목표.",
+      "priority": "hard",
+      "estimatedTime": "6 hours",
+      "dependencies": [],
+      "metadata": {
+        "task_type": "algorithm_optimization",
+        "acceptance_criteria": [
+          "평균 응답 시간 50ms 이하",
+          "메모리 사용량 30% 감소",
+          "정확도 유지 (F1 score >= 0.95)",
+          "부하 테스트 통과 (1000 req/s)"
+        ],
+        "test_command": "npm test -- search.perf.test.ts",
+        "build_command": "npm run build"
+      }
+    },
+    {
+      "id": "task-3",
+      "name": "대시보드 UI 리팩토링",
+      "description": "레거시 대시보드 컴포넌트 리팩토링. 성능 개선 및 유지보수성 향상.",
+      "priority": "medium",
+      "estimatedTime": "3 hours",
+      "dependencies": [],
+      "metadata": {
+        "task_type": "ui_ux",
+        "acceptance_criteria": [
+          "컴포넌트 구조 단순화",
+          "렌더링 성능 20% 개선",
+          "접근성 검증 (WCAG 2.1 AA)",
+          "반응형 디자인 적용"
+        ],
+        "test_command": "npm test -- dashboard.test.tsx"
+      }
+    },
+    {
+      "id": "task-4",
+      "name": "프로덕션 버그 수정 (로그인 실패)",
+      "description": "특정 조건에서 로그인 실패하는 버그 디버깅 및 수정.",
+      "priority": "hard",
+      "estimatedTime": "2 hours",
+      "dependencies": [],
+      "metadata": {
+        "task_type": "debugging",
+        "acceptance_criteria": [
+          "버그 재현 시나리오 작성",
+          "근본 원인 파악",
+          "수정 및 검증",
+          "회귀 테스트 추가"
+        ],
+        "test_command": "npm test -- login.test.ts"
+      }
+    },
+    {
+      "id": "task-5",
+      "name": "데이터베이스 마이그레이션 스크립트 작성",
+      "description": "users 테이블에 email_verified 컬럼 추가 및 기존 데이터 마이그레이션.",
+      "priority": "medium",
+      "estimatedTime": "1 hour",
+      "dependencies": [],
+      "metadata": {
+        "acceptance_criteria": [
+          "마이그레이션 스크립트 작성",
+          "롤백 스크립트 작성",
+          "테스트 데이터 검증"
+        ],
+        "test_command": "npm run migrate:test"
+      }
+    },
+    {
+      "id": "task-6",
+      "name": "README 업데이트",
+      "description": "프로젝트 README 파일 업데이트 (설치 가이드, API 문서 링크 추가).",
+      "priority": "easy",
+      "estimatedTime": "30 minutes",
+      "dependencies": [],
+      "metadata": {
+        "task_type": "documentation",
+        "acceptance_criteria": [
+          "설치 가이드 작성",
+          "API 문서 링크 추가",
+          "예제 코드 추가"
+        ]
+      }
+    }
+  ],
+  "totalTasks": 6,
+  "createdAt": "2025-11-18T10:00:00Z"
+}

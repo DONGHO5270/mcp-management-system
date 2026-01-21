@@ -1,0 +1,55 @@
+# Node modules
+node_modules/
+
+# Environment variables (never commit these)
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+
+# MCP local config (user-specific)
+.mcp.json
+.mcp.local.json
+
+# Serena personal data
+.serena/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+.cache/
+
+# Build outputs
+dist/
+build/
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+env/
+
+# Backup files
+*.bak
+*.backup
+*~

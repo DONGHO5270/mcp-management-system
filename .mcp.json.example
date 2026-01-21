@@ -1,0 +1,84 @@
+{
+  "mcpServers": {
+    "_comment": "이 파일을 .mcp.json으로 복사하고 경로를 수정하세요",
+
+    "clear-thought": {
+      "_comment": "npm install -g @waldzellai/clear-thought 또는 GitHub clone",
+      "command": "node",
+      "args": [
+        "/path/to/clear-thought/dist/index.js"
+      ],
+      "env": {
+        "MAX_OUTPUT_TOKENS": "64000"
+      },
+      "type": "stdio"
+    },
+
+    "clear-thought-1.5": {
+      "_comment": "npm install -g @waldzellai/clear-thought-onepointfive",
+      "command": "node",
+      "args": [
+        "/path/to/clear-thought-1.5/dist/index.js"
+      ],
+      "env": {
+        "MAX_OUTPUT_TOKENS": "128000"
+      },
+      "type": "stdio"
+    },
+
+    "sequential-thinking-tools": {
+      "_comment": "npm install -g mcp-sequentialthinking-tools",
+      "command": "node",
+      "args": [
+        "/path/to/sequential-thinking-tools/dist/index.js"
+      ],
+      "env": {
+        "MAX_OUTPUT_TOKENS": "64000"
+      },
+      "type": "stdio"
+    },
+
+    "stochastic-thinking": {
+      "_comment": "npm install -g @waldzellai/stochasticthinking",
+      "command": "node",
+      "args": [
+        "/path/to/stochastic-thinking/dist/index.js"
+      ],
+      "env": {
+        "MAX_OUTPUT_TOKENS": "64000"
+      },
+      "type": "stdio"
+    },
+
+    "model-enhancement-servers": {
+      "_comment": "npm install -g @waldzellai/model-enhancement-servers",
+      "command": "node",
+      "args": [
+        "/path/to/model-enhancement-servers/unified-stdio-server.js"
+      ],
+      "env": {
+        "MAX_OUTPUT_TOKENS": "64000"
+      },
+      "type": "stdio"
+    },
+
+    "serena-memory": {
+      "_comment": "Docker 필요: docker build -t serena-mcp:latest .",
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-v",
+        "/path/to/your/projects:/projects",
+        "serena-mcp:latest",
+        "--project",
+        "/projects/your-project"
+      ],
+      "env": {
+        "MSYS_NO_PATHCONV": "1"
+      },
+      "type": "stdio"
+    }
+  }
+}
