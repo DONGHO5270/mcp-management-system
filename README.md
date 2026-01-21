@@ -11,6 +11,38 @@
 
 # English
 
+## Who is This For?
+
+| ✅ This system is for you if... | ❌ This system is NOT for you if... |
+|--------------------------------|-------------------------------------|
+| You use **Claude Code** daily and want more structured outputs | You're new to Claude and still learning basics |
+| You make **technical decisions** (architecture, library choices) | You only use Claude for simple Q&A |
+| You want **reproducible analysis workflows** | You prefer ad-hoc prompting |
+| You're comfortable with **npm, git, and CLI tools** | You're not comfortable with terminal commands |
+| You want to **reduce cognitive bias** in decisions | You trust your gut feeling completely |
+
+**Prerequisites:**
+- Basic Claude Code experience (1+ week recommended)
+- Comfort with npm/git commands
+- Node.js 18+ installed
+
+---
+
+## Plain Claude vs This System
+
+| Aspect | Plain Claude | With This System |
+|--------|-------------|------------------|
+| Analysis depth | Single perspective | **5 perspectives simultaneously** |
+| Decision process | Ad-hoc reasoning | **Structured workflow with bias detection** |
+| Confidence calibration | Often overconfident | **Auto-corrected (85% → 70%)** |
+| Cross-session memory | Lost every session | **Persistent via Serena Memory** |
+| Reproducibility | Varies by prompt | **Consistent workflow outputs** |
+| Setup effort | None | **30 min initial setup** |
+
+**Bottom line:** This system adds structure and rigor to Claude's reasoning. If you need consistent, high-quality analysis for important decisions, the setup time pays off.
+
+---
+
 ## What This System Solves
 
 | Problem | Solution |
@@ -32,6 +64,39 @@
 | Complex analysis time | 2 hours | 15 min | **-87%** |
 | Cognitive bias detection | Manual | Auto (4 types) | **Automated** |
 | Cross-session context | Lost | Persistent | **100% retained** |
+
+---
+
+## See It in Action
+
+### decision-workflow Example Output
+
+```
+$ /decision-workflow "MSA vs Monolith for our e-commerce platform"
+
+📊 DECISION ANALYSIS COMPLETE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 Recommendation: Modular Monolith (not MSA)
+
+📈 Analysis Summary:
+├── Options evaluated: 4 (MSA, Monolith, Modular Monolith, Serverless)
+├── Perspectives analyzed: 5 (Technical, Cost, Risk, Organization, Market)
+└── Confidence: 70% (calibrated from initial 85%)
+
+⚠️ Biases Detected & Corrected:
+├── Confirmation Bias: Initial preference for MSA questioned
+├── Bandwagon Effect: "Everyone uses MSA" challenged
+├── Sunk Cost: Previous microservice experience discounted
+└── Overconfidence: Reduced confidence from 85% to 70%
+
+✅ Key Reasoning:
+• Team size (5 devs) insufficient for MSA operational overhead
+• Current traffic (10k DAU) doesn't justify distributed complexity
+• Modular Monolith allows future MSA migration when needed
+```
+
+> **Note:** This is actual output from the system. Your results will vary based on your specific context.
 
 ---
 
@@ -450,6 +515,38 @@ Issues and PRs are welcome. However, don't expect immediate responses.
 
 # 한국어 <a id="korean"></a>
 
+## 이 시스템은 누구를 위한 것인가?
+
+| ✅ 이런 분에게 적합합니다 | ❌ 이런 분에게는 맞지 않습니다 |
+|-------------------------|------------------------------|
+| **Claude Code**를 매일 사용하며 더 체계적인 출력을 원하는 분 | Claude를 처음 접하고 기본기를 배우는 중인 분 |
+| **기술 의사결정**(아키텍처, 라이브러리 선택)을 자주 하는 분 | Claude를 단순 Q&A로만 사용하는 분 |
+| **재현 가능한 분석 워크플로우**를 원하는 분 | 즉흥적인 프롬프팅을 선호하는 분 |
+| **npm, git, CLI 도구**에 익숙한 분 | 터미널 명령어가 불편한 분 |
+| 의사결정에서 **인지 편향을 줄이고 싶은** 분 | 직감을 완전히 신뢰하는 분 |
+
+**사전 요구사항:**
+- Claude Code 기본 사용 경험 (1주 이상 권장)
+- npm/git 명령어 사용 가능
+- Node.js 18+ 설치됨
+
+---
+
+## 기본 Claude vs 이 시스템
+
+| 항목 | 기본 Claude | 이 시스템 적용 시 |
+|------|------------|------------------|
+| 분석 깊이 | 단일 관점 | **5가지 관점 동시 분석** |
+| 의사결정 프로세스 | 즉흥적 추론 | **편향 검출 포함 구조화된 워크플로우** |
+| 신뢰도 교정 | 종종 과신 | **자동 교정 (85% → 70%)** |
+| 세션 간 메모리 | 매 세션 유실 | **Serena Memory로 영구 저장** |
+| 재현성 | 프롬프트마다 다름 | **일관된 워크플로우 출력** |
+| 설정 노력 | 없음 | **초기 설정 30분** |
+
+**핵심 요약:** 이 시스템은 Claude의 추론에 구조와 엄격함을 더합니다. 중요한 의사결정을 위해 일관되고 고품질의 분석이 필요하다면 설정 시간은 충분히 가치 있습니다.
+
+---
+
 ## 이 시스템이 해결하는 문제
 
 | 기존 문제 | 이 시스템의 해결책 |
@@ -471,6 +568,39 @@ Issues and PRs are welcome. However, don't expect immediate responses.
 | 복잡한 분석 시간 | 2시간 | 15분 | **-87%** |
 | 인지 편향 검출 | 수동 | 자동 4가지 | **자동화** |
 | 세션 간 컨텍스트 | 유실 | 영구 저장 | **100% 유지** |
+
+---
+
+## 실제 실행 예시
+
+### decision-workflow 출력 예시
+
+```
+$ /decision-workflow "이커머스 플랫폼에 MSA vs 모노리스"
+
+📊 의사결정 분석 완료
+━━━━━━━━━━━━━━━━━━━━
+
+🎯 추천: Modular Monolith (MSA 아님)
+
+📈 분석 요약:
+├── 평가된 옵션: 4개 (MSA, Monolith, Modular Monolith, Serverless)
+├── 분석 관점: 5개 (기술, 비용, 리스크, 조직, 시장)
+└── 신뢰도: 70% (초기 85%에서 교정됨)
+
+⚠️ 검출 및 교정된 편향:
+├── Confirmation Bias: MSA에 대한 초기 선호 의문 제기
+├── Bandwagon Effect: "다들 MSA 쓴다"는 주장 검증
+├── Sunk Cost: 이전 마이크로서비스 경험 객관적 재평가
+└── Overconfidence: 신뢰도 85%에서 70%로 하향 조정
+
+✅ 핵심 근거:
+• 팀 규모(5명)가 MSA 운영 오버헤드를 감당하기 부족
+• 현재 트래픽(DAU 1만)은 분산 복잡성을 정당화하지 못함
+• Modular Monolith는 필요 시 향후 MSA 전환 가능
+```
+
+> **참고:** 이것은 시스템의 실제 출력입니다. 결과는 사용자의 구체적인 상황에 따라 달라집니다.
 
 ---
 
