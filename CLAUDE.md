@@ -124,7 +124,7 @@ Main 폴더 (3개):
 - **루트**: `.`
 - **MCP 설정**: `.mcp.json` (15개 서비스), `.mcp.local.json` (프로젝트별 override)
 - **브리지**: `mcp-bridge-config.json` (간접 호출용)
-- **서비스 위치**: `C:\claude-development\mcp-management\services\`
+- **서비스 위치**: `./services/` (MCP 서비스 설치 시 생성)
 
 ### MCP 연동 방법
 1. **직접 호출**: Claude Code의 MCP 도구
@@ -227,7 +227,7 @@ Task("분석 작업", {
 
 ### 간접 호출
 ```bash
-node "C:\claude-development\mcp-management\mcp-bridge.cjs" clear-thought analyze
+node "./mcp-bridge.cjs" clear-thought analyze
 ```
 
 ### 세션 중 MCP 토글 (v2.0.60+)
