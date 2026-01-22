@@ -107,6 +107,44 @@ $ /decision-workflow "MSA vs Monolith for our e-commerce platform"
 
 ## Core Skills
 
+### How Skills Work (Under the Hood)
+
+Each Skill orchestrates multiple **MCP (Model Context Protocol)** services - specialized AI reasoning tools:
+
+| Skill | MCP Services Used | What Each Does |
+|-------|-------------------|----------------|
+| **decision-workflow** | sequential-thinking → bias-detection → stochastic | Step-by-step reasoning → Cognitive bias correction → Probability analysis |
+| **multidimensional-analysis** | 5 MCPs in parallel (clear-thought, sequential, stochastic, context7, bias-detection) | Simultaneous 5-perspective deep analysis |
+| **implementation-workflow** | sequential-thinking → clear-thought (first_principles) | Task decomposition → First principles validation |
+| **research-workflow** | sequential-thinking → clear-thought → bias-detection | Structured research → Mental models → Bias-free conclusions |
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    User Request                         │
+│              "MSA vs Monolith decision"                 │
+└─────────────────────┬───────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────┐
+│                 decision-workflow                        │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  │
+│  │ Sequential   │→ │    Bias      │→ │  Stochastic  │  │
+│  │  Thinking    │  │  Detection   │  │   Analysis   │  │
+│  │  (10 steps)  │  │  (4 biases)  │  │ (Monte Carlo)│  │
+│  └──────────────┘  └──────────────┘  └──────────────┘  │
+└─────────────────────┬───────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────┐
+│            Structured, Debiased Decision                │
+│         with 70% calibrated confidence                  │
+└─────────────────────────────────────────────────────────┘
+```
+
+> **Why this matters:** This isn't prompt engineering magic. It's **systematic orchestration** of specialized AI tools, each contributing a specific cognitive capability that Claude alone doesn't provide.
+
+---
+
 ### decision-workflow
 
 **Problem it solves:**
@@ -610,6 +648,44 @@ $ /decision-workflow "이커머스 플랫폼에 MSA vs 모노리스"
 ---
 
 ## 핵심 Skills 상세
+
+### Skills의 작동 원리 (내부 구조)
+
+각 Skill은 여러 **MCP (Model Context Protocol)** 서비스를 조합합니다 - 특화된 AI 추론 도구들입니다:
+
+| Skill | 사용하는 MCP 서비스 | 각 역할 |
+|-------|---------------------|---------|
+| **decision-workflow** | sequential-thinking → bias-detection → stochastic | 단계별 추론 → 인지 편향 교정 → 확률 분석 |
+| **multidimensional-analysis** | 5개 MCP 병렬 실행 (clear-thought, sequential, stochastic, context7, bias-detection) | 5가지 관점 동시 심층 분석 |
+| **implementation-workflow** | sequential-thinking → clear-thought (first_principles) | 작업 분해 → First Principles 검증 |
+| **research-workflow** | sequential-thinking → clear-thought → bias-detection | 구조화된 리서치 → 멘탈 모델 → 편향 없는 결론 |
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    사용자 요청                           │
+│              "MSA vs 모노리스 결정"                      │
+└─────────────────────┬───────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────┐
+│                 decision-workflow                        │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  │
+│  │ Sequential   │→ │    Bias      │→ │  Stochastic  │  │
+│  │  Thinking    │  │  Detection   │  │   Analysis   │  │
+│  │  (10단계)    │  │  (4개 편향)  │  │ (Monte Carlo)│  │
+│  └──────────────┘  └──────────────┘  └──────────────┘  │
+└─────────────────────┬───────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────┐
+│          구조화되고 편향이 교정된 의사결정                │
+│              70% 교정된 신뢰도                           │
+└─────────────────────────────────────────────────────────┘
+```
+
+> **왜 중요한가:** 이것은 프롬프트 엔지니어링 마법이 아닙니다. Claude 단독으로는 제공하지 못하는 특화된 인지 능력을 각각 기여하는 **AI 도구들의 체계적인 오케스트레이션**입니다.
+
+---
 
 ### decision-workflow (의사결정)
 
