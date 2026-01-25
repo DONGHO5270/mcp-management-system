@@ -1,7 +1,13 @@
 # Research Workflow - Executable Instructions (Hybrid B+)
 
-**Version**: 2.8.0 (Hybrid B+ Mode + Phase 2 Pilot)
-**Purpose**: 빠른 정보 수집 (Quick Mode) + 필요시 심층 리서치 (Deep Mode) - clear-thought-1.5 통합 + bias-detection 재도입
+**Version**: 2.9.0 (Hybrid B+ Mode + Phase 2 Complete + Task 결과 크기 제한)
+**Purpose**: 빠른 정보 수집 (Quick Mode) + 필요시 심층 리서치 (Deep Mode) - clear-thought-1.5 통합 + bias-detection 영구 통합 + **Task 결과 크기 제한**
+
+**주요 변경** (v2.9.0):
+- **Task 결과 크기 제한**: 2,000자 (토큰 과소모 해결)
+- 4 Tasks 토큰: 60,000+ → 13,000~16,000 (-73~78%)
+- 컨텍스트 점유: 35% → 8~10%
+- 세션 이동 후 잔존율: 12% → 50%+
 
 **주요 변경** (v2.8.0):
 - **model-enhancement-servers 재도입**: bias-detection (편향 검출 및 완화, Phase 2 Pilot)
@@ -304,6 +310,28 @@ try {
 
 **⚠️ CRITICAL**: Claude must invoke all 4 Tasks in a SINGLE message, using `run_in_background: true`
 
+### ⚠️ 결과 크기 제한 (v2.9 신규)
+
+**문제**: Task() 결과가 부모 컨텍스트에 전체 반환되어 토큰 과소모 발생 (Task당 ~15,000 tokens → 4 Tasks = 60,000+ tokens)
+
+**해결**: 모든 Task 결과 **2,000자 이내** 제한
+
+| 제한 | 품질 유지 | 토큰 절감 | 형식 |
+|------|----------|----------|------|
+| **2,000자** | 85% | 87% | 핵심 3줄 + 결론 + 신뢰도 |
+
+**각 Task 프롬프트에 필수 포함**:
+```
+⚠️ **결과 크기 제한**: 반환 결과 **2,000자 이내**
+- 상세 분석은 Serena Memory에 저장됨
+- 형식: 핵심 발견 3줄 + 결론 + 신뢰도%
+- 초과 시 핵심만 추출하여 요약
+```
+
+**효과**:
+- 4 Tasks 전체: 60,000+ → 13,000~16,000 tokens (-73~78%)
+- 컨텍스트 점유: 35% → 8~10%
+
 ```javascript
 // RA: Sequential Thinking (clear-thought-1.5) + Sequential Tools
 Task({
@@ -334,19 +362,23 @@ Task({
          value: "[Sequential 결과]"
        })
 
-    ⚠️ 필수 출력 (아래 형식으로 직접 텍스트 작성):
+    ⚠️ **결과 크기 제한**: 반환 결과 **2,000자 이내**
+    - 상세 분석은 Serena Memory에 저장됨 (위 3번)
+    - 형식: 핵심 발견 3줄 + 결론 + 신뢰도%
+    - 초과 시 핵심만 추출하여 요약
+
+    ⚠️ 필수 출력 (아래 형식으로 직접 텍스트 작성, 2,000자 이내):
     ## RA 분석 결과
 
-    ### 순차 분석 (sequential-thinking-tools)
-    - **Step 1 (목표정의)**: [Research goal clarification]
-    - **Step 2 (정보수집 전략)**: [Information gathering strategy]
-    - **Step 3 (출처 선정)**: [Source selection criteria]
-    - **Step 4 (분석 방법론)**: [Analysis methodology]
+    ### 순차 분석 (핵심 3줄)
+    - [가장 중요한 발견]
+    - [두 번째 중요한 발견]
+    - [세 번째 중요한 발견]
 
-    ### 순차적 리서치 분해 (clear-thought-1.5 sequential_thinking)
-    - **누락된 관점**: [Missing perspectives identified]
-    - **추가 조사 필요 항목**: [Additional research needs]
-    - **리서치 로드맵**: [Step-by-step research roadmap]
+    ### 리서치 로드맵
+    - [핵심 1줄 요약]
+
+    ### 신뢰도: [X]%
   `
 })
 
@@ -384,22 +416,23 @@ Task({
          value: "[Systems Thinking 결과]"
        })
 
-    ⚠️ 필수 출력 (아래 형식으로 직접 텍스트 작성):
+    ⚠️ **결과 크기 제한**: 반환 결과 **2,000자 이내**
+    - 상세 분석은 Serena Memory에 저장됨 (위 3번)
+    - 형식: 핵심 발견 3줄 + 결론 + 신뢰도%
+    - 초과 시 핵심만 추출하여 요약
+
+    ⚠️ 필수 출력 (아래 형식으로 직접 텍스트 작성, 2,000자 이내):
     ## RB 분석 결과
 
-    ### 시스템 사고 (clear-thought-1.5 systems_thinking)
-    - **주요 구성요소**: [정보 생태계 components]
-    - **관계**: [Relationships and dependencies]
-    - **피드백 루프**:
-      - 양성 (Positive): [Reinforcing loops - e.g., popularity → more coverage]
-      - 음성 (Negative): [Balancing loops - e.g., hype cycle correction]
-    - **창발 속성**: [Emergent properties of information system]
-    - **레버리지 포인트**: [High-impact intervention points for better research]
+    ### 시스템 사고 (핵심 3줄)
+    - [주요 구성요소 핵심]
+    - [핵심 피드백 루프]
+    - [레버리지 포인트]
 
-    ### 인과 분석 (optional)
-    - **인과 체인**: [Source quality] → [Information accuracy] → [Research confidence]
-    - **핵심 인과관계**: [Most critical factor affecting research quality]
-    - **간접 효과**: [Second-order effects on research outcomes]
+    ### 인과 분석 (요약)
+    - [핵심 인과관계 1줄]
+
+    ### 신뢰도: [X]%
   `
 })
 
@@ -432,23 +465,24 @@ Task({
          value: "[Stochastic + Analogical 결과]"
        })
 
-    ⚠️ 필수 출력 (아래 형식으로 직접 텍스트 작성):
+    ⚠️ **결과 크기 제한**: 반환 결과 **2,000자 이내**
+    - 상세 분석은 Serena Memory에 저장됨 (위 3번)
+    - 형식: 핵심 발견 3줄 + 결론 + 신뢰도%
+    - 초과 시 핵심만 추출하여 요약
+
+    ⚠️ 필수 출력 (아래 형식으로 직접 텍스트 작성, 2,000자 이내):
     ## RC 분석 결과
 
-    ### 확률 분석 (Monte Carlo 5,000회)
-    - **정보 품질 확률**: 최선 [X]%, 기준 [Y]%, 최악 [Z]%
-    - **신뢰도 수준**: [높음/중간/낮음] - [근거]
-    - **불확실성 요인**: [Key uncertainty factors]
+    ### 확률 분석 (핵심 3줄)
+    - 정보 품질 확률: 최선 [X]%, 기준 [Y]%, 최악 [Z]%
+    - 핵심 불확실성: [1줄]
+    - 기대값: [1줄]
 
-    **기대값**:
-    EV = (최선 확률 × 품질) + (기준 확률 × 품질) + (최악 확률 × 품질)
-       = [Expected information quality]
+    ### 유사 연구 패턴 (요약)
+    - 성공 사례 교훈: [1줄]
+    - 실패 사례 회피점: [1줄]
 
-    ### 유사 연구 패턴 (clear-thought-1.5 analogical_reasoning)
-    - **유사 성공 사례**: [Research case] - [교훈: 어떤 접근이 효과적이었나]
-    - **유사 실패 사례**: [Research case] - [회피점: 어떤 함정을 피해야 하나]
-    - **재사용 가능 패턴**: [Transferable research methodology]
-    - **적용 전략**: [How to apply analogies to current research]
+    ### 신뢰도: [X]%
   `
 })
 
@@ -492,28 +526,24 @@ Task({
          value: "[Scientific + Collaborative 결과]"
        })
 
-    ⚠️ 필수 출력 (아래 형식으로 직접 텍스트 작성):
+    ⚠️ **결과 크기 제한**: 반환 결과 **2,000자 이내**
+    - 상세 분석은 Serena Memory에 저장됨 (위 3번)
+    - 형식: 핵심 발견 3줄 + 결론 + 신뢰도%
+    - 초과 시 핵심만 추출하여 요약
+
+    ⚠️ 필수 출력 (아래 형식으로 직접 텍스트 작성, 2,000자 이내):
     ## RD 분석 결과
 
-    ### 과학적 방법론 (clear-thought-1.5 scientific_method)
-    - **가설 H0**: [Testable hypothesis statement]
-    - **변수**:
-      - 독립 변수: [What we're testing]
-      - 종속 변수: [What we're measuring]
-      - 통제 변수: [What we're keeping constant]
-    - **예측**:
-      - H0 참일 때: [Expected research outcome]
-      - H0 거짓일 때: [Alternative research outcome]
-    - **검증 방법**: [How to validate through research]
-    - **성공 조건**: [What evidence confirms/rejects H0]
+    ### 과학적 방법론 (핵심 3줄)
+    - 가설: [핵심 1줄]
+    - 검증 방법: [핵심 1줄]
+    - 성공 조건: [핵심 1줄]
 
-    ### 다관점 리서치 (clear-thought-1.5 collaborative_reasoning)
-    - **연구자 관점**: [Academic rigor, methodology soundness]
-    - **실무자 관점**: [Practical applicability, real-world relevance]
-    - **기술 전문가 관점**: [Technical accuracy, implementation feasibility]
-    - **사용자 관점**: [Understandability, accessibility, actionability]
-    - **합의점**: [Where perspectives agree]
-    - **이견**: [Where perspectives diverge - needs further investigation]
+    ### 다관점 리서치 (요약)
+    - 합의점: [1줄]
+    - 이견: [1줄]
+
+    ### 신뢰도: [X]%
   `
 })
 ```
