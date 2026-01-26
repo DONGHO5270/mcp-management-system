@@ -1,5 +1,17 @@
 # decision-workflow Skill Execution Instructions
 
+## MCP Verified Status
+
+| Service | Operations | Status |
+|---------|------------|--------|
+| clear-thought | mentalmodel (first_principles, opportunity_cost, error_propagation), debuggingapproach | 100% (2/2 tests, 2025-12-28) |
+| model-enhancement-servers | bias-detection | Phase 2 Complete (2025-12-29), 가치 4.0/5 |
+| clear-thought-1.5 | decision_framework, systems_thinking, scientific_method, metacognitive_monitoring, collaborative_reasoning | 100% (5/5, 2025-12-28) |
+
+**Phase 2 Result**: bias-detection 영구 통합, ethical-reasoning 제거 (가치 3.0/5)
+
+---
+
 ## Skill의 역할 (중요 ⚠️)
 
 **Skill은 실행 가능한 코드가 아닙니다**. Skill은 Claude에게 제공되는 **프롬프트 템플릿**입니다.

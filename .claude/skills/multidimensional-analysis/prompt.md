@@ -1,5 +1,20 @@
 # multidimensional-analysis Skill
 
+## MCP Verified Status
+
+| Service | Operations | Status |
+|---------|------------|--------|
+| sequential-thinking-tools | sequential_thinking (10 thoughts) | Stage 1 passed (2025-12-28) |
+| stochastic-thinking | mdp, mcts, bandit, bayesian, hmm | Stage 1 passed (2025-12-28) |
+| clear-thought | mentalmodel (6), debuggingapproach (13) | 100% (2/2 tests) |
+| serena-memory | write_memory | Active |
+| model-enhancement-servers | bias-detection | Phase 2 Complete (2025-12-29), 가치 4.0/5 |
+| clear-thought-1.5 | decision_framework, systems_thinking, scientific_method, metacognitive_monitoring, collaborative_reasoning, sequential_thinking, ethical_analysis, causal_analysis, statistical_reasoning, optimization | Re-verified (2025-12-28), 100% (5/5) |
+
+**Note**: model-enhancement-servers에서 ethical-reasoning 등 6개 모듈은 clear-thought-1.5로 대체하여 제거됨
+
+---
+
 **Version**: 3.5.0
 **Purpose**: Research-grade 다차원 분석 - 최대 성능 설계 → 탑다운 효율화 계단 (Level 5-2) + Phase 2 Complete (bias-detection only) + **Task 결과 크기 제한**
 **Required MCPs**: sequential-thinking-tools, stochastic-thinking, context7, model-enhancement-servers (bias-detection only), serena-memory, clear-thought, clear-thought-1.5

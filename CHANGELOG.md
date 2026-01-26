@@ -5,6 +5,39 @@ All notable changes to MCP Management System will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.6.0] - 2026-01-26
+
+### 🎯 Highlights
+- **Autocompacting Optimization**: skill.md files reduced by -92%, saving ~69 KB of context tokens per session
+- **YAML-only skill.md**: All skill metadata separated from instructions (prompt.md auto-loaded on invocation)
+
+### Changed
+- **6 Atomic skill.md** files → YAML-only format
+  - core-analysis: 3,279 → 683 bytes (-79%)
+  - decision-engine: 3,984 → 719 bytes (-82%)
+  - implementation-3wave: 4,726 → 678 bytes (-86%)
+  - session-memory: 4,669 → 714 bytes (-85%)
+  - git-safety: 3,305 → 529 bytes (-84%)
+  - prd-tracker: 3,073 → 562 bytes (-82%)
+
+- **4 Composite skill.md** files → minimal YAML
+  - multidimensional-analysis: 15,656 → 944 bytes (-94%)
+  - decision-workflow: 7,174 → 714 bytes (-90%)
+  - frontend-design: 6,918 → 452 bytes (-93%)
+  - research-workflow: 6,874 → 646 bytes (-91%)
+
+### Added
+- 6 new `prompt.md` files for Atomic skills (content extracted from skill.md)
+- MCP verified status headers in composite prompt.md files
+
+### Technical Details
+- Claude Code auto-loads `prompt.md` when a skill is invoked via `Skill()` or `/skill-name`
+- `skill.md` is always loaded at session start → smaller = less context consumption
+- `prompt.md` is loaded on-demand → no impact on baseline context
+- Total reduction: 13 files changed, -1,773 lines
+
+---
+
 ## [3.5.1] - 2026-01-25
 
 ### 🎯 Highlights

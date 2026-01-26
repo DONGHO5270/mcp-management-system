@@ -1,5 +1,15 @@
 # Research Workflow - Executable Instructions (Hybrid B+)
 
+## MCP Verified Status
+
+| Service | Operations | Status |
+|---------|------------|--------|
+| clear-thought | mentalmodel (first_principles, opportunity_cost, error_propagation), debuggingapproach | 100% (2/2 tests, 2025-12-28) |
+| clear-thought-1.5 | systems_thinking, scientific_method, structured_argumentation, analogical_reasoning, sequential_thinking, collaborative_reasoning | 100% (6/6, 2025-12-28) |
+| model-enhancement-servers | bias-detection (Deep Mode W1 RA) | Phase 2 Complete (2025-12-29), 가치 4.0/5 |
+
+---
+
 **Version**: 2.9.0 (Hybrid B+ Mode + Phase 2 Complete + Task 결과 크기 제한)
 **Purpose**: 빠른 정보 수집 (Quick Mode) + 필요시 심층 리서치 (Deep Mode) - clear-thought-1.5 통합 + bias-detection 영구 통합 + **Task 결과 크기 제한**
 
