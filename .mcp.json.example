@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "_comment": "이 파일을 .mcp.json으로 복사하고 경로를 수정하세요",
+    "_comment": "이 파일을 .mcp.json으로 복사하고 경로를 수정하세요 / Copy this to .mcp.json and update paths",
 
     "clear-thought": {
       "_comment": "npm install -g @waldzellai/clear-thought 또는 GitHub clone",
@@ -62,8 +62,112 @@
       "type": "stdio"
     },
 
+    "context7": {
+      "_comment": "npx -y @upstash/context7-mcp",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ],
+      "type": "stdio"
+    },
+
+    "code-context-provider-mcp": {
+      "_comment": "npm install -g code-context-provider-mcp",
+      "command": "node",
+      "args": [
+        "/path/to/code-context-provider-mcp/dist/index.js"
+      ],
+      "type": "stdio"
+    },
+
+    "github-mcp": {
+      "_comment": "npx -y @modelcontextprotocol/server-github",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "your-github-token-here"
+      },
+      "type": "stdio"
+    },
+
+    "npm-sentinel-mcp": {
+      "_comment": "npm install -g npm-sentinel-mcp",
+      "command": "node",
+      "args": [
+        "/path/to/npm-sentinel-mcp/dist/index.js"
+      ],
+      "type": "stdio"
+    },
+
+    "node-omnibus-mcp": {
+      "_comment": "npm install -g node-omnibus-mcp",
+      "command": "node",
+      "args": [
+        "/path/to/node-omnibus-mcp/dist/index.js"
+      ],
+      "type": "stdio"
+    },
+
+    "python-toolbox-mcp": {
+      "_comment": "pip install python-toolbox-mcp",
+      "command": "python",
+      "args": [
+        "-m",
+        "python_toolbox_mcp"
+      ],
+      "type": "stdio"
+    },
+
+    "playwright-mcp": {
+      "_comment": "npx -y @anthropic/mcp-playwright",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@anthropic/mcp-playwright"
+      ],
+      "type": "stdio"
+    },
+
+    "magic-mcp": {
+      "_comment": "npx -y @anthropic/magic-mcp",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@anthropic/magic-mcp"
+      ],
+      "type": "stdio"
+    },
+
+    "mobile-mcp": {
+      "_comment": "npx -y @anthropic/mobile-mcp",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@anthropic/mobile-mcp"
+      ],
+      "type": "stdio"
+    },
+
+    "supabase-mcp": {
+      "_comment": "npx -y supabase-mcp-server",
+      "command": "npx",
+      "args": [
+        "-y",
+        "supabase-mcp-server"
+      ],
+      "env": {
+        "SUPABASE_URL": "your-supabase-url",
+        "SUPABASE_SERVICE_KEY": "your-service-key"
+      },
+      "type": "stdio"
+    },
+
     "serena-memory": {
-      "_comment": "Docker 필요: docker build -t serena-mcp:latest .",
+      "_comment": "Docker 필요: docker build -t serena-mcp:latest . (Optional - Advanced)",
       "command": "docker",
       "args": [
         "run",

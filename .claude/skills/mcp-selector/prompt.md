@@ -543,7 +543,7 @@ Task("[service]", {
 
 **Indirect Call** (within session):
 ```bash
-node "./mcp-bridge.cjs" [service] [method] "[params]"
+node "C:\claude-development\mcp-management\mcp-bridge.cjs" [service] [method] "[params]"
 ```
 
 [Additional examples for other recommended services]

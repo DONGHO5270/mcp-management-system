@@ -1,55 +1,196 @@
 # Node modules
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Environment variables (never commit these)
+# Environment variables
 .env
 .env.local
 .env.*.local
-.env.production
-.env.development
 
-# MCP local config (user-specific)
-.mcp.json
-.mcp.local.json
+# Logs
+logs/
+*.log
+log-*.json
 
-# Serena personal data
-.serena/
+# OS files
+.DS_Store
+Thumbs.db
+nul
 
-# IDE
+# IDE files
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# OS files
-.DS_Store
-Thumbs.db
-
-# Logs
-*.log
-logs/
+# Docker volumes
+docker-volumes/
+data/
 
 # Temporary files
 *.tmp
 *.temp
-tmp/
 .cache/
+tmp/
 
 # Build outputs
 dist/
 build/
 
-# Coverage
-coverage/
-.nyc_output/
+# Documentation files - Only ignore internal notes and analysis
+# Note: README.md, CONTRIBUTING.md, LICENSE.md are tracked for GitHub
+NOTES.md
+TODO.md
+CLAUDE.md
+*-ANALYSIS*.md
+*-SURVEY*.md
+*-AUDIT*.md
+*_STRATEGY_*.md
+*_REPORT_*.md
+*_GUIDE_*.md
+*_SUMMARY_*.md
+*_PLAN_*.md
+*_DECISION_*.md
+!v5.5.1-templates/*_DECISION_*.md
+*_FRAMEWORK_*.md
+*_EXECUTIVE_*.md
+*_COMPLETE_*.md
+NEXT-SESSION*.md
+CURRENT-STATUS.md
+REDDIT-*.md
+ACTION_*.md
+WEEK*.md
+PHASE*.md
+DEPLOYMENT*.md
+EXECUTION*.md
+VALIDATION*.md
+TROUBLESHOOTING.md
+MCP_*.md
 
-# Python
-__pycache__/
-*.py[cod]
-venv/
-env/
+# Premium Content (Tier 1) - 유료 버전 전용
+imp_prompts*.md
+*prompts*.md
+*_v[0-9]*.md
+PREMIUM_*.md
+
+# Script files
+*.sh
+*.ps1
+*.bat
+fix-*.js
+test-*.js
+check-*.js
+verify-*.cjs
+audit-*.js
+debug-*.cjs
+stress-*.js
+benchmark-*.js
+monitoring-*.js
+
+# Premium Scripts (Tier 2) - 유료 버전 전용
+mcp-bridge.cjs
+apply-full-mcp*.cjs
+add-single-mcp.cjs
+mcp-selector.cjs
+mcp-preset.cjs
+core-config-manager*.js
+core-config-manager*.cjs
+*-mcp-test.cjs
+*-wrapper-test.cjs
+*-demo.cjs
+*-optimizer.js
+*-stochastic-analysis*.js
+*-stochastic-analysis*.py
+*-monte-carlo*.py
+*.stochastic*.json
+
+# Test files
+tests/
+test/
+*.test.js
+*.spec.js
 
 # Backup files
 *.bak
 *.backup
 *~
+
+# Private/sensitive files
+secrets/
+private/
+*.key
+*.pem
+*.cert
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+env/
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Misc
+.history/
+*.orig
+
+
+# MCP Management
+.mcp-cache/
+mcp-logs/
+*.mcp.local.json
+.mcp-usage.log
+.mcp-last-check.txt
+
+# Backup directories (정리 작업 시 생성되는 백업들)
+backup/cleanup-*/
+backup/migration-*/
+*.backup/
+
+# MCP 임시 파일들
+.mcp.backup*.json
+.mcp.json.backup-*
+.mcp.test*.json
+.mcp.hybrid*.json
+.mcp.optimized*.json
+.mcp.complete*.json
+.mcp.dormant.json
+.mcp.local.*
+
+# PM2 실험적 설정들
+ecosystem.hybrid*.config.js
+ecosystem.*tier*.config.js
+ecosystem.warm-cold.config.js
+
+# 실험적 스크립트들
+scripts/switch-to-*.js
+scripts/*tier*.js
+scripts/video-tutorials/
+core/test-*/
+core/*-wrapper.js
+
+# Premium Tools & Advanced Features (Tier 2) - 유료 버전 전용
+services/shared/
+services/serena/
+packages/bayesian-optimizer/
+dashboard/
+docs/
+audit-reports/
+compatibility-reports/
+dependency-reports/
+config-backup-*/
+.serena/
+
+# Claude Code Memory (local scope - 민감 정보)
+.claude/memory.local/
+
+# Python Analysis Scripts (고급 분석 도구)
+*.py
+!setup.py
+!__init__.py

@@ -19,7 +19,7 @@
 **Skill이 등록되어 있으면 MCP 직접 호출 금지** - 반드시 Skill() 도구 사용
 
 ### 등록된 Skills
-17개 Skills (v3.0 - 2026-01-01 Atomic/Composite 아키텍처) - 상세: `.claude/skills/` 폴더
+18개 Skills (v3.1 - Atomic/Composite 아키텍처) - 상세: `.claude/skills/` 폴더
 
 **🔷 Atomic Skills (9개)** - 독립 실행 가능한 기본 단위:
 
@@ -36,18 +36,19 @@ Main 폴더 (3개):
 - session-continuity (v2.2.0): 세션 핸드오프 템플릿
 - frontend-design (v1.1.0): UI/UX 설계 가이드라인
 
-**🔶 Composite Skills (8개)** - Atomic 조합으로 구성:
+**🔶 Composite Skills (9개)** - Atomic 조합으로 구성:
 
 | Skill | Version | Dependencies |
 |-------|---------|--------------|
-| multidimensional-analysis | v3.5.0 | core-analysis, decision-engine, session-memory |
-| decision-workflow | v2.9.0 | decision-engine, session-memory |
-| implementation-workflow | v3.0.0 | implementation-3wave, session-memory |
-| research-workflow | v3.0.0 | core-analysis, decision-engine, session-memory |
+| multidimensional-analysis | v4.1.0 | core-analysis, decision-engine, session-memory |
+| decision-workflow | v3.1.0 | decision-engine, session-memory |
+| implementation-workflow | v3.1.0 | implementation-3wave, session-memory |
+| research-workflow | v3.1.0 | core-analysis, decision-engine, session-memory |
 | prd-auto-executor | v2.0.0 | prd-tracker, git-safety, session-memory |
 | prd-implementation-tracker | v3.0.0 | prd-tracker, session-memory |
 | deployment-checklist | v2.0.0 | session-memory, git-safety |
 | mcp-management-workflow | v3.0.0 | core-analysis, decision-engine |
+| agent-council | v2.0.0 | collaborative-reasoning, bias-detection |
 
 **Archived Skills** (`.claude/skills/_archived/`):
 - debugging-workflow, health-check-workflow (Hybrid B+ 중복)
@@ -196,13 +197,13 @@ Main 폴더 (3개):
 
 ## 🎣 Claude Code Hooks (v2.0.42+)
 
-**3가지 Hooks**:
+**6가지 Hooks**:
 1. **PermissionRequest** (`.claude/hooks/permission-request.js`)
    - MCP 사용 전 권한 검증
    - 자동 승인/거부 규칙
    - 사용량 로깅 (.serena/mcp_usage_log.jsonl)
 
-2. **PreToolUse** (`.claude/hooks/pre-tool-use.js`)
+2. **PreToolUse** (`.claude/hooks/pre-tool-use.cjs`)
    - 입력값 전처리 (5000자 제한, 위험 경로 차단)
 
 3. **SubagentStop** (`.claude/hooks/subagent-stop.js`) **v2.0.0**
@@ -210,6 +211,21 @@ Main 폴더 (3개):
    - `agent_transcript_path` 활용 (Claude Code v2.0.42+)
    - 추적 대상: prd-auto-executor, general-purpose, Explore, Plan
    - 저장 위치: `.serena/memories/{agent}_execution_{date}_{time}.md`
+
+4. **TaskCompleted** (`.claude/hooks/task-completed.js`) **NEW**
+   - 에이전트 작업 완료 시 자동 메트릭 수집
+   - `.serena/task_metrics.jsonl`에 기록
+   - 워크플로우 체인 자동 제안
+
+5. **TeammateIdle** (`.claude/hooks/teammate-idle.js`) **NEW**
+   - Agent Teams 유휴 상태 감지 (Claude Code 2.1.32+)
+   - 5분 경고, 10분 위험 임계값
+   - `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` 필요
+
+6. **SessionEnd** (`.claude/hooks/session-end.js`) **NEW**
+   - 세션 종료 시 경량 요약 자동 생성
+   - 140k-150k 토큰 자동 요약 → 1-5k 토큰 경량 요약 (**-98% 절감**)
+   - Serena Memory에 자동 저장
 
 **사용량 분석**: `node scripts/analyze-mcp-usage.js`
 
@@ -371,8 +387,8 @@ Task("프로젝트 분석", {
 
 ---
 
-**시스템 버전**: MCP Management System v3.0 (Atomic/Composite Architecture)
-**최종 업데이트**: 2026-01-01
+**시스템 버전**: MCP Management System v3.1 (Atomic/Composite Architecture)
+**최종 업데이트**: 2026-02-13
 **구성 서비스**: 15개
 **브릿지 지원**: ✅ 간접 호출 활성화
 **새 기능**: ✅ .mcp.local.json 병합

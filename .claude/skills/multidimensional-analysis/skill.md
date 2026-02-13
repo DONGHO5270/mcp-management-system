@@ -1,6 +1,6 @@
 ---
 name: multidimensional-analysis
-version: 4.0.0
+version: 4.1.0
 type: composite
 description: 연구급 다차원 분석 - Level 2~5 선택형 시스템
 dependencies:
@@ -20,7 +20,6 @@ mcp_dependencies:
   stochastic-thinking: "^2.0.0"
   serena-memory: "^1.0.0"
   clear-thought: "^1.0.0"
-  model-enhancement-servers: "^1.0.0"
   clear-thought-1.5: "^1.5.0"
 token_budget:
   level5_research: 3800-5300
@@ -30,7 +29,22 @@ token_budget:
 metadata:
   release_date: "2025-12-28"
   design: "Top-down (Performance-first → Efficiency ladder)"
-  mcp_services: 6
+  mcp_services: 5
   mcp_operations: 46
   confidence_range: "86-99.7%+"
+# Claude Code 2.1.33+ Task Restrictions
+tools:
+  - Task(Explore)           # 코드베이스 탐색
+  - Task(Plan)              # 분석 계획 수립
+  - Read
+  - Glob
+  - Grep
+  - WebSearch
+# Claude Code 2.1.33+ Memory
+memory:
+  scope: project
+  categories:
+    - analysis_history
+    - architecture_decisions
+    - risk_assessments
 ---

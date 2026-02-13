@@ -1,6 +1,6 @@
 ---
 name: prd-auto-executor
-version: 2.0.0
+version: 2.1.0
 type: composite
 description: Semi-automated PRD execution with Git safety and intelligent MCP selection
 dependencies:
@@ -26,6 +26,27 @@ capabilities:
   - sdd_validation
   - state_persistence
   - phase0_analysis
+# Claude Code 2.1.33+ Task Restrictions
+tools:
+  - Task(Explore)           # 코드베이스 탐색용
+  - Task(Plan)              # 구현 계획 수립용
+  - Task(Bash)              # 명령어 실행용 (git, npm 등)
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
+  - TaskCreate
+  - TaskUpdate
+  - TaskList
+# Claude Code 2.1.33+ Memory
+memory:
+  scope: project
+  categories:
+    - prd_progress
+    - implementation_status
+    - git_checkpoints
 ---
 
 # prd-auto-executor Skill

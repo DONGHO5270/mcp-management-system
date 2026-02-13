@@ -5,6 +5,51 @@ All notable changes to MCP Management System will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.7.0] - 2026-02-13
+
+### 🎯 Highlights
+- **agent-council**: New 5-Persona expert panel skill (Architect/CFO/DevOps/Security/PM)
+- **3 New Hooks**: task-completed, teammate-idle, session-end (-98% token savings)
+- **.mcp.json.example**: Full 15-service configuration (was 6)
+- **Claude Code 2.1.33+** compatibility updates across skills
+
+### Added
+- **agent-council** skill v2.0.0 - 5-persona collaborative reasoning with 3-round discussion
+  - Team Attention concept implementation
+  - Agent Teams compatible (Claude Code 2.1.32+)
+  - Token budget: 800-1200 tokens
+- **task-completed** hook - Auto-collects metrics on agent task completion
+- **teammate-idle** hook - Detects idle agents in Agent Teams
+- **session-end** hook - Lightweight session summary (-98% token reduction: 140k → 1-5k)
+- 9 new MCP service entries in `.mcp.json.example` (context7, code-context-provider, github, npm-sentinel, node-omnibus, python-toolbox, playwright, magic, mobile, supabase)
+
+### Changed
+- **Skills count**: 17 → 18 (agent-council added)
+- **Hooks count**: 3 → 6 (3 new productivity hooks)
+- **multidimensional-analysis** v3.5.0 → v4.1.0
+  - Claude Code 2.1.33+ Task/Memory restrictions
+  - Refined token budgets
+- **decision-workflow** v2.9.0 → v3.1.0
+  - Hybrid B+ modes (Quick/Deep)
+  - Enhanced bias detection integration
+- **implementation-workflow** v3.0.0 → v3.1.0
+  - Claude Code 2.1.33+ compatible
+  - Task restrictions defined
+- **research-workflow** v3.0.0 → v3.1.0
+  - Updated for new Claude Code compatibility
+- **session-continuity** - Updated templates
+- **mcp-selector** - Updated prompt.md
+- **prd-auto-executor** - Updated skill.md
+- **.gitignore** - Added patterns for MCP backups, Serena directories, analysis reports, temp files
+- **CLAUDE.md** - Updated to v3.1 with agent-council, 6 hooks, new version numbers
+
+### Technical Details
+- All composite skills updated for Claude Code 2.1.33+ compatibility
+- `.mcp.json.example` now includes all 15 MCP services with installation comments
+- Hooks architecture expanded from safety-only to include productivity automation
+
+---
+
 ## [3.6.0] - 2026-01-26
 
 ### 🎯 Highlights

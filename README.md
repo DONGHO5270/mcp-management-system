@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Claude Code](https://img.shields.io/badge/Claude_Code-Compatible-blueviolet)](https://claude.ai/code)
 [![MCP](https://img.shields.io/badge/MCP-15_Services-green)](./INSTALLATION.md)
-[![Skills](https://img.shields.io/badge/Skills-17_Workflows-orange)](./.claude/skills/)
+[![Skills](https://img.shields.io/badge/Skills-18_Workflows-orange)](./.claude/skills/)
 
 > **"Decision confidence: 72% → 95% | Complex analysis: 2 hours → 15 minutes"**
 >
@@ -246,7 +246,7 @@ Each Skill orchestrates multiple **MCP (Model Context Protocol)** services - spe
 
 ## Hooks
 
-Hooks run **automatically** to provide safety and traceability.
+Hooks run **automatically** to provide safety and traceability. **6 hooks** included.
 
 ### permission-request
 
@@ -280,6 +280,39 @@ Hooks run **automatically** to provide safety and traceability.
 - Integrates with Serena Memory
 
 **Output:** `.serena/memories/agent_execution_{date}.md`
+
+---
+
+### task-completed (NEW)
+
+**Role:** Auto-collects metrics on agent task completion
+
+**Benefits:**
+- Records execution metrics to `.serena/task_metrics.jsonl`
+- Suggests workflow chain continuations
+- Enables performance tracking over time
+
+---
+
+### teammate-idle (NEW)
+
+**Role:** Detects idle agents in Agent Teams (Claude Code 2.1.32+)
+
+**Benefits:**
+- 5-minute warning, 10-minute critical thresholds
+- Prevents wasted agent slots
+- Requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`
+
+---
+
+### session-end (NEW)
+
+**Role:** Lightweight session summary on exit
+
+**Benefits:**
+- Replaces 140k-150k token auto-summary with 1-5k tokens (**-98% reduction**)
+- Auto-saves to Serena Memory
+- Preserves key decisions and findings
 
 ---
 
@@ -510,12 +543,12 @@ cp .mcp.json.example .mcp.json
 ```
 mcp-management/
 ├── .claude/
-│   ├── skills/           # 17 Skills (core value)
+│   ├── skills/           # 18 Skills (core value)
 │   │   ├── _atomic/      # 6 basic building blocks
 │   │   ├── decision-workflow/
 │   │   ├── multidimensional-analysis/
 │   │   └── ...
-│   └── hooks/            # 3 automation triggers
+│   └── hooks/            # 6 automation triggers
 ├── .mcp.json.example     # MCP config template
 ├── CLAUDE.md             # Project context
 ├── INSTALLATION.md       # Full installation guide (18 services)
@@ -788,7 +821,7 @@ $ /decision-workflow "이커머스 플랫폼에 MSA vs 모노리스"
 
 ## Hooks 상세
 
-Hooks는 **자동으로 실행**되어 안전성과 추적성을 제공합니다.
+Hooks는 **자동으로 실행**되어 안전성과 추적성을 제공합니다. **6개 Hooks** 포함.
 
 ### permission-request (권한 검증)
 
@@ -822,6 +855,39 @@ Hooks는 **자동으로 실행**되어 안전성과 추적성을 제공합니다
 - Serena Memory와 연동
 
 **결과물**: `.serena/memories/agent_execution_{date}.md`
+
+---
+
+### task-completed (작업 완료 메트릭) NEW
+
+**역할**: 에이전트 작업 완료 시 자동 메트릭 수집
+
+**이점**:
+- `.serena/task_metrics.jsonl`에 실행 기록
+- 워크플로우 체인 자동 제안
+- 시간 경과에 따른 성능 추적
+
+---
+
+### teammate-idle (유휴 감지) NEW
+
+**역할**: Agent Teams에서 유휴 에이전트 감지 (Claude Code 2.1.32+)
+
+**이점**:
+- 5분 경고, 10분 위험 임계값
+- 낭비되는 에이전트 슬롯 방지
+- `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` 필요
+
+---
+
+### session-end (세션 종료 요약) NEW
+
+**역할**: 세션 종료 시 경량 요약 자동 생성
+
+**이점**:
+- 140k-150k 토큰 자동 요약 → 1-5k 토큰 (**-98% 절감**)
+- Serena Memory에 자동 저장
+- 핵심 결정과 발견사항 보존
 
 ---
 
@@ -1052,12 +1118,12 @@ cp .mcp.json.example .mcp.json
 ```
 mcp-management/
 ├── .claude/
-│   ├── skills/           # 17개 Skills (핵심 가치)
+│   ├── skills/           # 18개 Skills (핵심 가치)
 │   │   ├── _atomic/      # 6개 기본 빌딩 블록
 │   │   ├── decision-workflow/
 │   │   ├── multidimensional-analysis/
 │   │   └── ...
-│   └── hooks/            # 3개 자동화 트리거
+│   └── hooks/            # 6개 자동화 트리거
 ├── .mcp.json.example     # MCP 설정 템플릿
 ├── CLAUDE.md             # 프로젝트 컨텍스트
 ├── INSTALLATION.md       # 전체 설치 가이드 (18개 서비스)

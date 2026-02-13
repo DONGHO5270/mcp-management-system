@@ -568,3 +568,103 @@ mcp__serena-memory__read_memory({ key: "implementation_baseline_[기능명]" })
 ## 변경 이력
 
 See [CHANGELOG.md](./CHANGELOG.md) for version history and updates.
+- Wave 순서 위반 (W1→W2→W3)
+- Serena Memory 저장 생략
+- SR Exit 무시
+- **⚠️ 도구 호출만 하고 결과 미보고 (v2.1 신규)**
+
+---
+
+## 성공 기준
+
+### MCP 반복 방지 목표 달성
+
+**Pre-Check**:
+- [ ] Basic Pre-Check: 체크리스트 완료, **MCP 0회 사용**
+- [ ] Enhanced Pre-Check: Sequential/Bias 선택적 사용 (Claude 판단), **MCP 0-2회**, **Serena 저장 완료** ✅
+  - MCP 사용 시: 구현 실패 방지 +40%, 편향 보정 +17%p
+  - Fallback 사용 시: 체크리스트 기반 분석으로 대체
+
+**Phase 0 (Deep Mode) - S1 세션**:
+- [ ] Step 0: Baseline 체크 완료 (발견 안 됨 → Phase 0 FULL 실행)
+- [ ] W1: 4 Task 병렬 완료, **MCP 8회+ 사용** (TA/TB/TC/TD 각 2-3회), **각 Task 텍스트 출력 확인**, **Serena TA/TB/TC/TD 저장 완료**
+- [ ] W2: 변증법 + Decision + Ulysses 완료, **MCP 5회 사용**, **Serena W2 저장 완료**
+- [ ] W3: 메타인지 완료, **MCP 1회 사용**, **Baseline 저장 완료** ✅ (핵심)
+- [ ] **총 MCP 사용**: 14회+ (~75k tokens)
+
+**Phase 0 (Deep Mode) - S2+ 세션**:
+- [ ] Step 0: Baseline 체크 완료 (발견 됨, Coverage >= 70% → **Phase 0 SKIP**)
+- [ ] **MCP 0회 사용** (캐시된 TA/TB/TC/TD 재사용)
+- [ ] W2로 바로 점프, 캐시 로드 확인 (TA/TB/TC/TD 모두 ✅)
+- [ ] **토큰 절감**: 75k → 300 tokens (233× 효율 향상) ✅
+
+---
+
+## 변경 이력
+
+See [CHANGELOG.md](./CHANGELOG.md) for version history and updates.
+
+---
+
+## 📋 Skill Metadata (Autocompacting v3.6.0)
+
+### 3-Wave Structure
+
+**W1: 병렬 분석 (4 Tasks 동시)**
+- **TA**: Sequential + First Principles (현재상태, 의존성, 구현전략, 테스트계획)
+- **TB**: Systems + Visual + Causal (시스템 의존성, 원인-결과 체인)
+- **TC**: Stochastic + Scientific (성공 확률, 가설 검증)
+- **TD**: Bias + Collaborative + Analogical (편향 검사, 다관점, 유사 사례)
+
+**W2: 통합 논증**
+- Thesis → Antithesis → Synthesis
+- Decision Framework + Ulysses Protocol
+
+**W3: 메타인지**
+- 품질 검증 + Baseline 저장
+
+### Conditional Execution
+
+- **S1**: Phase 0 FULL → Baseline 저장
+- **S2+**: Baseline 로드 → Coverage ≥70% → Phase 0 SKIP
+
+### Success Criteria
+
+```yaml
+success_criteria:
+  w1: "4 Task 병렬 완료 + 텍스트 출력"
+  w2: "변증법 + Decision 완료"
+  w3: "메타인지 + Baseline 저장"
+  token: "S1<800 | S2+<200"
+```
+
+### Tags & Triggers
+
+```yaml
+tags:
+  - implementation-workflow
+  - feature-development
+  - 3-wave-parallel
+  - code-quality
+  - mcp-integration
+
+triggers:
+  - 구현
+  - 개발
+  - 기능 추가
+  - implementation
+  - feature development
+```
+
+### Capabilities
+
+```yaml
+capabilities:
+  - sequential_thinking
+  - first_principles_analysis
+  - systems_thinking
+  - stochastic_analysis
+  - bias_detection
+  - collaborative_reasoning
+  - scientific_method
+```
